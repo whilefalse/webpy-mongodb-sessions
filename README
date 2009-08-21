@@ -15,7 +15,7 @@ To setup:
  
 To use:
    
-    You can now use the `session` object as you would do with normal web.py sessions (http://webpy.org/cookbook/sessions).
+    You can now use the `session` object as you would do with normal web.py sessions - http://webpy.org/cookbook/sessions.
 
 
 TODO:
