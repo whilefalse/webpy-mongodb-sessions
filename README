@@ -18,7 +18,7 @@ To setup:
     #If you want to do user authentication and stuff aswell, add these two lines
     users.session = session
     users.collection = db.users
-    users.SALTY_GOODNESS = 'RANDOM_SALT'
+    users.SALTY_GOODNESS = u'RANDOM_SALT'
 
     #Then to do handle users...
 
