@@ -19,8 +19,12 @@ To setup:
     users.session = session
     users.collection = db.users
     users.SALTY_GOODNESS = u'RANDOM_SALT'
+ 
+To use:
+   
+    You can now use the `session` object as you would do with normal web.py sessions - http://webpy.org/cookbook/sessions.
 
-    #Then to do handle users...
+    To handle user stuff:
 
     #USER REGISTRATION
     users.register(username=username, password=users.pswd(password), contacts=[]) # Add anything you want to store as kwargs
@@ -46,10 +50,6 @@ To setup:
             #Do your stuff
             pass
 
- 
-To use:
-   
-    You can now use the `session` object as you would do with normal web.py sessions - http://webpy.org/cookbook/sessions.
 
 
 TODO:
