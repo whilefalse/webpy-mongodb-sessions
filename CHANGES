@@ -1,0 +1,4 @@
+v0.1dev, 2010-11-11 -- Steven Anderson's work from
+http://github.com/whilefalse/webpy-mongodb-sessions packaged up and with
+changes to session.py from Josh Bronson's fork:
+http://github.com/jab/webpy-mongodb-sessions
