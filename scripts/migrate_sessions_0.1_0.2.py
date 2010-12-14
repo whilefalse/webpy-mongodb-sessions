@@ -11,7 +11,7 @@ def main(dbname, collname='sessions'):
     db = getattr(Connection(), dbname)
     coll = getattr(db, collname)
     nsuccess = nfail = ntotal = 0
-    migratedkey = '__migrated_0.1_0.2'
+    migratedkey = '__migrated_0_1__0_2'
     for doc in coll.find({migratedkey: {'$exists': False}}):
         ntotal += 1
         docid = doc['_id']
