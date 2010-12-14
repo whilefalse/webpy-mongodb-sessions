@@ -67,22 +67,22 @@ class MongoStore(Store):
         return dict((k, Store.decode(self, v) if type(v) is Binary else v)
             for (k, v) in sessiondict.iteritems())
 
-    def __contains__(self, key):
-        return bool(self.collection.find_one({_id: key}))
+    def __contains__(self, sessionid):
+        return bool(self.collection.find_one({_id: sessionid}))
 
-    def __getitem__(self, key):
-        s = self.collection.find_one({_id: key})
+    def __getitem__(self, sessionid):
+        s = self.collection.find_one({_id: sessionid})
         if not s:
-            raise KeyError(key)
-        self.collection.update({_id: key}, {'$set': {_atime: time()}}, safe=True)
+            raise KeyError(sessionid)
+        self.collection.update({_id: sessionid}, {'$set': {_atime: time()}}, safe=True)
         return self.decode(s[_data])
 
-    def __setitem__(self, key, value):
-        data = self.encode(value)
-        self.collection.save({_id: key, _data: data, _atime: time()}, safe=True)
+    def __setitem__(self, sessionid, sessiondict):
+        data = self.encode(sessiondict)
+        self.collection.save({_id: sessionid, _data: data, _atime: time()}, safe=True)
 
-    def __delitem__(self, key):
-        self.collection.remove({_id: key}, safe=True)
+    def __delitem__(self, sessionid):
+        self.collection.remove({_id: sessionid}, safe=True)
 
     def cleanup(self, timeout):
         '''
