@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '0.1dev'
+version = '0.2dev'
 
 setup(
     name='webpy-mongodb-sessions',
