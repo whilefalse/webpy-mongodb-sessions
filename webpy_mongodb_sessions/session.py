@@ -55,7 +55,7 @@ _atime = 'atime'
 _data = 'data'
 
 class MongoStore(Store):
-    def __init__(self, db, collection_name):
+    def __init__(self, db, collection_name='sessions'):
         self.collection = db[collection_name]
         self.collection.ensure_index(_atime)
     
