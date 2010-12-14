@@ -25,11 +25,8 @@ class MongoStore(Store):
 
     def __setitem__(self, key, value):
         data = self.encode(value)
-        if self.collection.find_one({_id: key}):
-            self.collection.update({_id: key}, {'$set': {_data: data, _atime: time()}}, safe=True)
-        else:
-            self.collection.insert({_id: key, _data: data, _atime: time()}, safe=True)
-                
+        self.collection.save({_id: key, _data: data, _atime: time()}, safe=True)
+
     def __delitem__(self, key):
         self.collection.remove({_id: key}, safe=True)
 
