@@ -33,6 +33,9 @@ def main(dbname, collname='sessions'):
             stdout.write('ok\n')
     stdout.write('Done. %d sesions migrated, %d failed, %d total.\n' % (
         nsuccess, nfail, ntotal))
+    if ntotal:
+        stdout.write('You may want to run db.%s.update({}, {$unset: {%s: 1}}) '
+            'if all went well.\n' % (collname, migratedkey))
 
 if __name__ == '__main__':
     scriptname = argv.pop(0)
