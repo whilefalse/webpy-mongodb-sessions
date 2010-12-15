@@ -4,8 +4,7 @@ from re import _pattern_type
 from time import time
 from web.session import Store
 
-seq_types = set((tuple, list))
-map_types = set((dict,))
+valid_key_types = set((str, unicode))
 atomic_types = set((bool, int, long, float, str, unicode, type(None),
     _pattern_type, datetime))
 
@@ -15,7 +14,7 @@ def needs_encode(obj):
     >>> atomics = (True, 1, 1L, 1.0, '', u'', None, compile(''), datetime.now())
     >>> any(needs_encode(i) for i in atomics)
     False
-    >>> needs_encode((1, 2, 3))
+    >>> needs_encode([1, 2, 3])
     False
     >>> needs_encode([])
     False
@@ -23,26 +22,36 @@ def needs_encode(obj):
     False
     >>> needs_encode({})
     False
-    >>> needs_encode({1: {2: 3}})
+    >>> needs_encode({'1': {'2': 3}})
     False
-    >>> needs_encode({(1,): [2]})
+    >>> needs_encode({'1': [2]})
     False
+    
+    Objects that don't round trip need encoding::
+
+    >>> needs_encode(tuple())
+    True
     >>> needs_encode(set())
     True
     >>> needs_encode([1, [set()]])
     True
-    >>> needs_encode({1: {2: set()}})
+    >>> needs_encode({'1': {'2': set()}})
     True
-    >>> needs_encode({frozenset(): 1})
+
+    Mongo rejects dicts with non-string keys so they need encoding too::
+
+    >>> needs_encode({1: 2})
+    True
+    >>> needs_encode({'1': {None: True}})
     True
     '''
     obtype = type(obj)
     if obtype in atomic_types:
         return False
-    if obtype in seq_types:
+    if obtype is list:
         return any(needs_encode(i) for i in obj)
-    if obtype in map_types:
-        return any(needs_encode(k) or needs_encode(v)
+    if obtype is dict:
+        return any(type(k) not in valid_key_types or needs_encode(v)
             for (k, v) in obj.iteritems())
     return True
 
