@@ -2,6 +2,10 @@
 CHANGES
 =======
 
+v0.2.1dev, 2010-12-15
+---------------------
+* Fixes to encoding
+
 v0.2dev, 2010-12-14
 -------------------
 * Made storage of session data inside MongoDB less opaque: the "data" field
@@ -10,7 +14,7 @@ v0.2dev, 2010-12-14
 
 * collection_name now defaults to 'sessions'
 
-v0.1dev, 2010-11-11
+v0.1, 2010-11-11
 -------------------
 
 * Steven Anderson's http://github.com/whilefalse/webpy-mongodb-sessions
