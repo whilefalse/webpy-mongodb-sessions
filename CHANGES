@@ -2,6 +2,13 @@
 CHANGES
 =======
 
+v0.2dev, 2010-12-14
+-------------------
+* Made storage of session data inside MongoDB less opaque: the "data" field
+  is now a dict whose values are only pickled if they need to be. An
+  accompanying migration facilitates upgrading from 0.1.
+
+* collection_name now defaults to 'sessions'
 
 v0.1dev, 2010-11-11
 -------------------
