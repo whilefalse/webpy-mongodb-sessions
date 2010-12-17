@@ -9,7 +9,7 @@ setup(
     keywords='web.py mongodb',
     author='Steven Anderson',
     author_email='steve@whilefalse.net',
-    url='http://pypi.python.org/pypi/webpy-mongodb-sessions',
+    url='https://github.com/whilefalse/webpy-mongodb-sessions',
     license='MIT',
     packages=find_packages(),
     install_requires=[
