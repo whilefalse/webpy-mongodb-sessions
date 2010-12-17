@@ -31,7 +31,7 @@ def main(dbname, collname='sessions'):
         else:
             nsuccess += 1
             stdout.write('ok\n')
-    stdout.write('Done. %d sesions migrated, %d failed, %d total.\n' % (
+    stdout.write('Done. %d sessions migrated, %d failed, %d total.\n' % (
         nsuccess, nfail, ntotal))
     if ntotal:
         stdout.write('You may want to run db.%s.update({}, {$unset: {%s: 1}}) '
