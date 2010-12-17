@@ -34,6 +34,11 @@ def main(dbname, collname='sessions'):
         stdout.write('%4d. Migrating doc %s... ' % (ntotal, docid))
         try:
             data = doc['data']
+            if not isinstance(data, basestring):
+                stdout.write('abort\n')
+                stderr.write('data field contains non-string value. Was the '
+                    'migration run already?\n')
+                exit(1)
             data = loads(decodestring(data))
             data = dict((k, Binary(encodestring(dumps(v))) if needs_encode(v)
                 else v) for (k, v) in data.iteritems())
