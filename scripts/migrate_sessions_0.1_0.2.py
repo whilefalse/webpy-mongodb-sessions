@@ -1,11 +1,27 @@
 #!/usr/bin/env python
 
 from base64 import decodestring, encodestring
+from datetime import datetime
 from pickle import dumps, loads
 from pymongo import Connection
 from pymongo.binary import Binary
+from re import _pattern_type
 from sys import argv, stdout, stderr
-from webpy_mongodb_sessions.session import needs_encode
+
+valid_key_types = set((str, unicode))
+atomic_types = set((bool, int, long, float, str, unicode, type(None),
+    _pattern_type, datetime))
+
+def needs_encode(obj):
+    obtype = type(obj)
+    if obtype in atomic_types:
+        return False
+    if obtype is list:
+        return any(needs_encode(i) for i in obj)
+    if obtype is dict:
+        return any(type(k) not in valid_key_types or needs_encode(v)
+            for (k, v) in obj.iteritems())
+    return True
 
 def main(dbname, collname='sessions'):
     db = getattr(Connection(), dbname)
