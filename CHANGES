@@ -2,6 +2,10 @@
 CHANGES
 =======
 
+v0.2.2dev, 2010-12-17
+---------------------
+* Improvements to migration
+
 v0.2.1dev, 2010-12-15
 ---------------------
 * Fixes to encoding
