@@ -1,3 +1,6 @@
+webpy-mongodb-sessions
+===
+
 A SessionStore class that allows you to use web.py sessions with MongoDB.
 
 To setup:
@@ -49,9 +52,3 @@ To use:
         def GET(self):
             #Do your stuff
             pass
-
-
-
-TODO:
-
-    Tests! They are coming I promise. I don't have Internet at the moment.
