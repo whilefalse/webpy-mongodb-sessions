@@ -27,9 +27,9 @@ To setup:
 To use:
 ===
    
-    You can now use the `session` object as you would do with normal web.py sessions - http://webpy.org/cookbook/sessions.
+You can now use the `session` object as you would do with normal web.py sessions - http://webpy.org/cookbook/sessions.
 
-    To handle user stuff:
+To handle user stuff:
 
     #USER REGISTRATION
     users.register(username=username, password=users.pswd(password), contacts=[]) # Add anything you want to store as kwargs
