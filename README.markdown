@@ -4,6 +4,7 @@ webpy-mongodb-sessions
 A SessionStore class that allows you to use web.py sessions with MongoDB.
 
 To setup:
+===
 
     import web
     from session import MongoStore
@@ -24,6 +25,7 @@ To setup:
     users.SALTY_GOODNESS = u'RANDOM_SALT'
  
 To use:
+===
    
     You can now use the `session` object as you would do with normal web.py sessions - http://webpy.org/cookbook/sessions.
 

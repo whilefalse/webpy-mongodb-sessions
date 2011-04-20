@@ -3,3 +3,5 @@ dist
 .DS_Store
 *.egg-info
 *.swp
+.*.un~
+*.pyc
