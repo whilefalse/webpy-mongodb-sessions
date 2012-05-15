@@ -1,5 +1,5 @@
 from datetime import datetime
-from pymongo.binary import Binary
+from bson.binary import Binary
 from re import _pattern_type
 from time import time
 from web.session import Store
