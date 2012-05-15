@@ -11,7 +11,7 @@ To setup:
     from pymongo import Connection
     #if you want to do user auth stuff add the following line
     import users
- 
+
     #First get a MongoDB database object
     c = Connection()
     db = c.webpy
@@ -23,10 +23,10 @@ To setup:
     users.session = session
     users.collection = db.users
     users.SALTY_GOODNESS = u'RANDOM_SALT'
- 
+
 To use:
 ===
-   
+
 You can now use the `session` object as you would do with normal web.py sessions - http://webpy.org/cookbook/sessions.
 
 To handle user stuff:
